@@ -1,0 +1,7 @@
+{
+  "name": "ABC Academy Basket Club",
+  "description": "Site officiel de l'ABC Academy Basket Club à la Cité Alioune Sow, Sénégal. Formation, discipline et excellence pour les jeunes basketteurs.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
