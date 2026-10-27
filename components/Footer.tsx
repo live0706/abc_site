@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
               <li><a href="#home" className="hover:text-orange-500 transition-colors">Accueil</a></li>
               <li><a href="#club" className="hover:text-orange-500 transition-colors">Le Club</a></li>
               <li><a href="#programs" className="hover:text-orange-500 transition-colors">Programmes</a></li>
-              <li><a href="#coach" className="hover:text-orange-500 transition-colors">Espace Coach</a></li>
+              <li><a href="#registration" className="hover:text-orange-500 transition-colors">Inscription</a></li>
               <li><a href="#health" className="hover:text-orange-500 transition-colors">Santé & Prévention</a></li>
               <li><a href="#info" className="hover:text-orange-500 transition-colors">Infos Pratiques</a></li>
             </ul>

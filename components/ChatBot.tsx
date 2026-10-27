@@ -1,6 +1,5 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { GoogleGenAI } from '@google/genai';
 import { ChatMessage } from '../types';
 
 const ChatBot: React.FC = () => {
@@ -30,22 +29,23 @@ const ChatBot: React.FC = () => {
   ];
 
   const handleSend = async () => {
-    if (!input.trim()) return;
+    if (!input.trim() || isLoading) return;
 
     const userMessage: ChatMessage = { role: 'user', text: input };
-    setMessages(prev => [...prev, userMessage]);
+    const history = [...messages, userMessage];
+    setMessages(history);
     setInput('');
     setIsLoading(true);
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
-      const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
-        contents: input,
-        config: {
-          systemInstruction: 'Tu es l\'assistant virtuel de l\'ABC Academy Basket Club au Sénégal. Tu réponds de manière motivante et professionnelle. Tu donnes des détails sur les tarifs (25k inscription, 10k mensuel), les horaires (Mercredi, Samedi, Dimanche; Vacances 7j/7) et la localisation (Cité Alioune Sow). Sois chaleureux.',
-        }
+      // L'appel à Gemini passe par la fonction serverless /api/chat pour ne pas exposer la clé API
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history.map(({ role, text }) => ({ role, text })) }),
       });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const response: { text: string } = await res.json();
 
       const randomImg = basketballImages[Math.floor(Math.random() * basketballImages.length)];
       

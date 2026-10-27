@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Gallery: React.FC = () => {
-  // IMPORTANT: Assurez-vous que ces images existent dans le dossier `public/assets/images/`
+  // Images servies depuis `public/assets/images/`
   const images = [
     "/assets/images/image1.jpg",
     "/assets/images/image2.jpg",

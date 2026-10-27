@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { FEES, TRAININGS } from '../clubInfo';
 
 const PracticalInfo: React.FC = () => {
   return (
@@ -17,7 +18,9 @@ const PracticalInfo: React.FC = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-white/5 p-4 rounded-xl border border-white/10">
                   <p className="text-orange-500 text-sm font-black uppercase mb-1">Année Scolaire</p>
-                  <p className="text-gray-300">Mercredi, Samedi, Dimanche</p>
+                  {TRAININGS.map(t => (
+                    <p key={t.id} className="text-gray-300">{t.day} <span className="text-gray-500 text-sm whitespace-nowrap">{t.hours}</span></p>
+                  ))}
                 </div>
                 <div className="bg-white/5 p-4 rounded-xl border border-white/10">
                   <p className="text-orange-500 text-sm font-black uppercase mb-1">Vacances</p>
@@ -34,11 +37,15 @@ const PracticalInfo: React.FC = () => {
               <div className="space-y-4">
                 <div className="flex justify-between items-center py-4 border-b border-white/10">
                   <span className="text-gray-400">Frais d'inscription (Unique)</span>
-                  <span className="text-2xl font-black text-white">25 000 FCFA</span>
+                  <span className="text-2xl font-black text-white">{FEES.inscription}</span>
+                </div>
+                <div className="flex justify-between items-center py-4 border-b border-white/10">
+                  <span className="text-gray-400">Réinscription</span>
+                  <span className="text-2xl font-black text-white">{FEES.reinscription}</span>
                 </div>
                 <div className="flex justify-between items-center py-4 border-b border-white/10">
                   <span className="text-gray-400">Mensualité</span>
-                  <span className="text-2xl font-black text-white">10 000 FCFA</span>
+                  <span className="text-2xl font-black text-white">{FEES.monthly}</span>
                 </div>
               </div>
               <div className="mt-8 bg-orange-600 p-6 rounded-2xl">

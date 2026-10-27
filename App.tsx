@@ -4,7 +4,6 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Programs from './components/Programs';
-import CoachSpace from './components/CoachSpace';
 import HealthSection from './components/HealthSection';
 import PracticalInfo from './components/PracticalInfo';
 import PlayerRegistration from './components/PlayerRegistration';
@@ -39,10 +38,6 @@ const App: React.FC = () => {
 
         <section id="registration" className="py-20">
           <PlayerRegistration />
-        </section>
-
-        <section id="coach" className="bg-orange-50 py-20">
-          <CoachSpace />
         </section>
 
         <section id="health" className="py-20">
